@@ -1,0 +1,59 @@
+=== R17 run 1 ===
+Sort  (cost=2.22..2.22 rows=2 width=42) (actual time=0.025..0.025 rows=2.00 loops=1)
+  Sort Key: i.started_at DESC, i.id DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=8
+  ->  Nested Loop  (cost=0.00..2.21 rows=2 width=42) (actual time=0.013..0.014 rows=2.00 loops=1)
+        Buffers: shared hit=2
+        ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=13) (actual time=0.008..0.008 rows=1.00 loops=1)
+              Filter: ((id = 3) AND (user_id = 1))
+              Rows Removed by Filter: 9
+              Buffers: shared hit=1
+        ->  Seq Scan on incidents i  (cost=0.00..1.04 rows=2 width=33) (actual time=0.004..0.004 rows=2.00 loops=1)
+              Filter: (monitor_id = 3)
+              Rows Removed by Filter: 1
+              Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=153
+Planning Time: 0.696 ms
+Execution Time: 0.058 ms
+
+=== R17 run 2 ===
+Sort  (cost=2.22..2.22 rows=2 width=42) (actual time=0.034..0.034 rows=2.00 loops=1)
+  Sort Key: i.started_at DESC, i.id DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=8
+  ->  Nested Loop  (cost=0.00..2.21 rows=2 width=42) (actual time=0.017..0.018 rows=2.00 loops=1)
+        Buffers: shared hit=2
+        ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=13) (actual time=0.010..0.010 rows=1.00 loops=1)
+              Filter: ((id = 3) AND (user_id = 1))
+              Rows Removed by Filter: 9
+              Buffers: shared hit=1
+        ->  Seq Scan on incidents i  (cost=0.00..1.04 rows=2 width=33) (actual time=0.005..0.006 rows=2.00 loops=1)
+              Filter: (monitor_id = 3)
+              Rows Removed by Filter: 1
+              Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=153
+Planning Time: 0.556 ms
+Execution Time: 0.076 ms
+
+=== R17 run 3 ===
+Sort  (cost=2.22..2.22 rows=2 width=42) (actual time=0.031..0.031 rows=2.00 loops=1)
+  Sort Key: i.started_at DESC, i.id DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=8
+  ->  Nested Loop  (cost=0.00..2.21 rows=2 width=42) (actual time=0.013..0.015 rows=2.00 loops=1)
+        Buffers: shared hit=2
+        ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=13) (actual time=0.008..0.008 rows=1.00 loops=1)
+              Filter: ((id = 3) AND (user_id = 1))
+              Rows Removed by Filter: 9
+              Buffers: shared hit=1
+        ->  Seq Scan on incidents i  (cost=0.00..1.04 rows=2 width=33) (actual time=0.004..0.005 rows=2.00 loops=1)
+              Filter: (monitor_id = 3)
+              Rows Removed by Filter: 1
+              Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=153
+Planning Time: 0.523 ms
+Execution Time: 0.070 ms

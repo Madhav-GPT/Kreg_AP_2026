@@ -1,0 +1,32 @@
+=== W5 run 1 ===
+Insert on check_results  (cost=0.00..0.02 rows=1 width=57) (actual time=0.153..0.154 rows=1.00 loops=1)
+  Buffers: shared hit=73
+  ->  Result  (cost=0.00..0.02 rows=1 width=57) (actual time=0.022..0.022 rows=1.00 loops=1)
+        Buffers: shared hit=16
+Planning:
+  Buffers: shared hit=12
+Planning Time: 0.052 ms
+Trigger for constraint check_results_monitor_id_fkey: time=0.276 calls=1
+Execution Time: 0.455 ms
+
+=== W5 run 2 ===
+Insert on check_results  (cost=0.00..0.02 rows=1 width=57) (actual time=0.340..0.341 rows=1.00 loops=1)
+  Buffers: shared hit=73
+  ->  Result  (cost=0.00..0.02 rows=1 width=57) (actual time=0.045..0.045 rows=1.00 loops=1)
+        Buffers: shared hit=16
+Planning:
+  Buffers: shared hit=12
+Planning Time: 0.093 ms
+Trigger for constraint check_results_monitor_id_fkey: time=0.297 calls=1
+Execution Time: 0.677 ms
+
+=== W5 run 3 ===
+Insert on check_results  (cost=0.00..0.02 rows=1 width=57) (actual time=0.167..0.168 rows=1.00 loops=1)
+  Buffers: shared hit=73
+  ->  Result  (cost=0.00..0.02 rows=1 width=57) (actual time=0.044..0.044 rows=1.00 loops=1)
+        Buffers: shared hit=16
+Planning:
+  Buffers: shared hit=12
+Planning Time: 0.042 ms
+Trigger for constraint check_results_monitor_id_fkey: time=0.273 calls=1
+Execution Time: 0.464 ms

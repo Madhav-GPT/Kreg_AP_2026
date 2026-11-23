@@ -1,0 +1,20 @@
+=== R13 run 1 ===
+Result  (cost=0.00..0.01 rows=1 width=4) (actual time=0.000..0.001 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.023 ms
+Execution Time: 0.014 ms
+
+=== R13 run 2 ===
+Result  (cost=0.00..0.01 rows=1 width=4) (actual time=0.000..0.001 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.027 ms
+Execution Time: 0.014 ms
+
+=== R13 run 3 ===
+Result  (cost=0.00..0.01 rows=1 width=4) (actual time=0.001..0.002 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.048 ms
+Execution Time: 0.029 ms

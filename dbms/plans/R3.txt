@@ -1,0 +1,29 @@
+=== R3 run 1 ===
+Seq Scan on users u  (cost=0.00..1.04 rows=1 width=40) (actual time=0.003..0.003 rows=1.00 loops=1)
+  Filter: (id = 1)
+  Rows Removed by Filter: 2
+  Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=88
+Planning Time: 0.160 ms
+Execution Time: 0.020 ms
+
+=== R3 run 2 ===
+Seq Scan on users u  (cost=0.00..1.04 rows=1 width=40) (actual time=0.003..0.003 rows=1.00 loops=1)
+  Filter: (id = 1)
+  Rows Removed by Filter: 2
+  Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=88
+Planning Time: 0.159 ms
+Execution Time: 0.018 ms
+
+=== R3 run 3 ===
+Seq Scan on users u  (cost=0.00..1.04 rows=1 width=40) (actual time=0.003..0.004 rows=1.00 loops=1)
+  Filter: (id = 1)
+  Rows Removed by Filter: 2
+  Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=88
+Planning Time: 0.162 ms
+Execution Time: 0.021 ms

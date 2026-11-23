@@ -1,0 +1,113 @@
+=== R18 run 1 ===
+Sort  (cost=74.56..74.57 rows=4 width=29) (actual time=0.129..0.130 rows=4.00 loops=1)
+  Sort Key: m.id
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=41
+  ->  HashAggregate  (cost=74.38..74.52 rows=4 width=29) (actual time=0.114..0.119 rows=4.00 loops=1)
+        Group Key: m.id
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=38
+        ->  Nested Loop  (cost=30.51..72.64 rows=174 width=26) (actual time=0.053..0.095 rows=145.00 loops=1)
+              Buffers: shared hit=38
+              ->  Seq Scan on users u  (cost=0.00..1.04 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Filter: (id = 1)
+                    Rows Removed by Filter: 2
+                    Buffers: shared hit=1
+              ->  Hash Right Join  (cost=30.51..69.86 rows=174 width=30) (actual time=0.048..0.085 rows=145.00 loops=1)
+                    Hash Cond: (c.monitor_id = m.id)
+                    Buffers: shared hit=37
+                    ->  Bitmap Heap Scan on check_results c  (cost=29.33..67.05 rows=436 width=13) (actual time=0.039..0.055 rows=430.00 loops=1)
+                          Recheck Cond: (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '24:00:00'::interval))
+                          Heap Blocks: exact=4
+                          Buffers: shared hit=36
+                          ->  Bitmap Index Scan on check_results_monitor_id_checked_at_idx  (cost=0.00..29.22 rows=436 width=0) (actual time=0.033..0.033 rows=430.00 loops=1)
+                                Index Cond: (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '24:00:00'::interval))
+                                Index Searches: 10
+                                Buffers: shared hit=32
+                    ->  Hash  (cost=1.12..1.12 rows=4 width=21) (actual time=0.006..0.006 rows=4.00 loops=1)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=1
+                          ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=4 width=21) (actual time=0.002..0.003 rows=4.00 loops=1)
+                                Filter: (is_public AND (user_id = 1))
+                                Rows Removed by Filter: 6
+                                Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=249
+Planning Time: 0.503 ms
+Execution Time: 0.170 ms
+
+=== R18 run 2 ===
+Sort  (cost=74.56..74.57 rows=4 width=29) (actual time=0.126..0.127 rows=4.00 loops=1)
+  Sort Key: m.id
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=41
+  ->  HashAggregate  (cost=74.38..74.52 rows=4 width=29) (actual time=0.111..0.116 rows=4.00 loops=1)
+        Group Key: m.id
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=38
+        ->  Nested Loop  (cost=30.51..72.64 rows=174 width=26) (actual time=0.051..0.093 rows=145.00 loops=1)
+              Buffers: shared hit=38
+              ->  Seq Scan on users u  (cost=0.00..1.04 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Filter: (id = 1)
+                    Rows Removed by Filter: 2
+                    Buffers: shared hit=1
+              ->  Hash Right Join  (cost=30.51..69.86 rows=174 width=30) (actual time=0.047..0.083 rows=145.00 loops=1)
+                    Hash Cond: (c.monitor_id = m.id)
+                    Buffers: shared hit=37
+                    ->  Bitmap Heap Scan on check_results c  (cost=29.33..67.05 rows=436 width=13) (actual time=0.038..0.053 rows=430.00 loops=1)
+                          Recheck Cond: (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '24:00:00'::interval))
+                          Heap Blocks: exact=4
+                          Buffers: shared hit=36
+                          ->  Bitmap Index Scan on check_results_monitor_id_checked_at_idx  (cost=0.00..29.22 rows=436 width=0) (actual time=0.032..0.032 rows=430.00 loops=1)
+                                Index Cond: (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '24:00:00'::interval))
+                                Index Searches: 10
+                                Buffers: shared hit=32
+                    ->  Hash  (cost=1.12..1.12 rows=4 width=21) (actual time=0.005..0.005 rows=4.00 loops=1)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=1
+                          ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=4 width=21) (actual time=0.001..0.002 rows=4.00 loops=1)
+                                Filter: (is_public AND (user_id = 1))
+                                Rows Removed by Filter: 6
+                                Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=249
+Planning Time: 0.478 ms
+Execution Time: 0.166 ms
+
+=== R18 run 3 ===
+Sort  (cost=74.56..74.57 rows=4 width=29) (actual time=0.121..0.122 rows=4.00 loops=1)
+  Sort Key: m.id
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=41
+  ->  HashAggregate  (cost=74.38..74.52 rows=4 width=29) (actual time=0.107..0.112 rows=4.00 loops=1)
+        Group Key: m.id
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=38
+        ->  Nested Loop  (cost=30.51..72.64 rows=174 width=26) (actual time=0.048..0.090 rows=145.00 loops=1)
+              Buffers: shared hit=38
+              ->  Seq Scan on users u  (cost=0.00..1.04 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Filter: (id = 1)
+                    Rows Removed by Filter: 2
+                    Buffers: shared hit=1
+              ->  Hash Right Join  (cost=30.51..69.86 rows=174 width=30) (actual time=0.044..0.081 rows=145.00 loops=1)
+                    Hash Cond: (c.monitor_id = m.id)
+                    Buffers: shared hit=37
+                    ->  Bitmap Heap Scan on check_results c  (cost=29.33..67.05 rows=436 width=13) (actual time=0.036..0.050 rows=430.00 loops=1)
+                          Recheck Cond: (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '24:00:00'::interval))
+                          Heap Blocks: exact=4
+                          Buffers: shared hit=36
+                          ->  Bitmap Index Scan on check_results_monitor_id_checked_at_idx  (cost=0.00..29.22 rows=436 width=0) (actual time=0.031..0.031 rows=430.00 loops=1)
+                                Index Cond: (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '24:00:00'::interval))
+                                Index Searches: 10
+                                Buffers: shared hit=32
+                    ->  Hash  (cost=1.12..1.12 rows=4 width=21) (actual time=0.005..0.005 rows=4.00 loops=1)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=1
+                          ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=4 width=21) (actual time=0.002..0.002 rows=4.00 loops=1)
+                                Filter: (is_public AND (user_id = 1))
+                                Rows Removed by Filter: 6
+                                Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=249
+Planning Time: 0.437 ms
+Execution Time: 0.159 ms

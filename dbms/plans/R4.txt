@@ -1,0 +1,47 @@
+=== R4 run 1 ===
+Limit  (cost=1.20..1.22 rows=6 width=69) (actual time=0.015..0.015 rows=6.00 loops=1)
+  Buffers: shared hit=7
+  ->  Sort  (cost=1.20..1.22 rows=6 width=69) (actual time=0.014..0.014 rows=6.00 loops=1)
+        Sort Key: created_at DESC, id DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=7
+        ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=6 width=69) (actual time=0.004..0.005 rows=6.00 loops=1)
+              Filter: (user_id = 1)
+              Rows Removed by Filter: 4
+              Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=120
+Planning Time: 0.229 ms
+Execution Time: 0.029 ms
+
+=== R4 run 2 ===
+Limit  (cost=1.20..1.22 rows=6 width=69) (actual time=0.015..0.016 rows=6.00 loops=1)
+  Buffers: shared hit=7
+  ->  Sort  (cost=1.20..1.22 rows=6 width=69) (actual time=0.015..0.015 rows=6.00 loops=1)
+        Sort Key: created_at DESC, id DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=7
+        ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=6 width=69) (actual time=0.004..0.005 rows=6.00 loops=1)
+              Filter: (user_id = 1)
+              Rows Removed by Filter: 4
+              Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=120
+Planning Time: 0.197 ms
+Execution Time: 0.031 ms
+
+=== R4 run 3 ===
+Limit  (cost=1.20..1.22 rows=6 width=69) (actual time=0.015..0.016 rows=6.00 loops=1)
+  Buffers: shared hit=7
+  ->  Sort  (cost=1.20..1.22 rows=6 width=69) (actual time=0.015..0.015 rows=6.00 loops=1)
+        Sort Key: created_at DESC, id DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=7
+        ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=6 width=69) (actual time=0.005..0.005 rows=6.00 loops=1)
+              Filter: (user_id = 1)
+              Rows Removed by Filter: 4
+              Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=120
+Planning Time: 0.214 ms
+Execution Time: 0.031 ms

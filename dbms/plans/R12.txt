@@ -1,0 +1,86 @@
+=== R12 run 1 ===
+Sort  (cost=63.64..63.66 rows=7 width=48) (actual time=1.907..1.907 rows=7.00 loops=1)
+  Sort Key: r.day
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=29
+  ->  Subquery Scan on r  (cost=63.23..63.55 rows=7 width=48) (actual time=1.881..1.899 rows=7.00 loops=1)
+        Buffers: shared hit=26
+        ->  Limit  (cost=63.23..63.51 rows=7 width=16) (actual time=0.103..0.120 rows=7.00 loops=1)
+              Buffers: shared hit=26
+              ->  GroupAggregate  (cost=63.23..76.61 rows=334 width=16) (actual time=0.103..0.119 rows=7.00 loops=1)
+                    Group Key: ((c.checked_at)::date)
+                    Buffers: shared hit=26
+                    ->  Sort  (cost=63.23..64.07 rows=336 width=5) (actual time=0.085..0.091 rows=325.00 loops=1)
+                          Sort Key: ((c.checked_at)::date) DESC
+                          Sort Method: quicksort  Memory: 32kB
+                          Buffers: shared hit=26
+                          ->  Bitmap Heap Scan on check_results c  (cost=11.73..49.13 rows=336 width=5) (actual time=0.018..0.073 rows=336.00 loops=1)
+                                Recheck Cond: ((monitor_id = 1) AND (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '7 days'::interval)))
+                                Heap Blocks: exact=23
+                                Buffers: shared hit=26
+                                ->  Bitmap Index Scan on check_results_monitor_id_checked_at_idx  (cost=0.00..11.65 rows=336 width=0) (actual time=0.014..0.014 rows=336.00 loops=1)
+                                      Index Cond: ((monitor_id = 1) AND (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '7 days'::interval)))
+                                      Index Searches: 1
+                                      Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=133
+Planning Time: 0.244 ms
+Execution Time: 1.929 ms
+
+=== R12 run 2 ===
+Sort  (cost=63.64..63.66 rows=7 width=48) (actual time=1.509..1.509 rows=7.00 loops=1)
+  Sort Key: r.day
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=29
+  ->  Subquery Scan on r  (cost=63.23..63.55 rows=7 width=48) (actual time=1.485..1.501 rows=7.00 loops=1)
+        Buffers: shared hit=26
+        ->  Limit  (cost=63.23..63.51 rows=7 width=16) (actual time=0.078..0.093 rows=7.00 loops=1)
+              Buffers: shared hit=26
+              ->  GroupAggregate  (cost=63.23..76.61 rows=334 width=16) (actual time=0.078..0.093 rows=7.00 loops=1)
+                    Group Key: ((c.checked_at)::date)
+                    Buffers: shared hit=26
+                    ->  Sort  (cost=63.23..64.07 rows=336 width=5) (actual time=0.068..0.073 rows=325.00 loops=1)
+                          Sort Key: ((c.checked_at)::date) DESC
+                          Sort Method: quicksort  Memory: 32kB
+                          Buffers: shared hit=26
+                          ->  Bitmap Heap Scan on check_results c  (cost=11.73..49.13 rows=336 width=5) (actual time=0.016..0.056 rows=336.00 loops=1)
+                                Recheck Cond: ((monitor_id = 1) AND (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '7 days'::interval)))
+                                Heap Blocks: exact=23
+                                Buffers: shared hit=26
+                                ->  Bitmap Index Scan on check_results_monitor_id_checked_at_idx  (cost=0.00..11.65 rows=336 width=0) (actual time=0.012..0.012 rows=336.00 loops=1)
+                                      Index Cond: ((monitor_id = 1) AND (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '7 days'::interval)))
+                                      Index Searches: 1
+                                      Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=133
+Planning Time: 0.214 ms
+Execution Time: 1.531 ms
+
+=== R12 run 3 ===
+Sort  (cost=63.64..63.66 rows=7 width=48) (actual time=1.549..1.550 rows=7.00 loops=1)
+  Sort Key: r.day
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=29
+  ->  Subquery Scan on r  (cost=63.23..63.55 rows=7 width=48) (actual time=1.524..1.542 rows=7.00 loops=1)
+        Buffers: shared hit=26
+        ->  Limit  (cost=63.23..63.51 rows=7 width=16) (actual time=0.081..0.097 rows=7.00 loops=1)
+              Buffers: shared hit=26
+              ->  GroupAggregate  (cost=63.23..76.61 rows=334 width=16) (actual time=0.080..0.096 rows=7.00 loops=1)
+                    Group Key: ((c.checked_at)::date)
+                    Buffers: shared hit=26
+                    ->  Sort  (cost=63.23..64.07 rows=336 width=5) (actual time=0.070..0.076 rows=325.00 loops=1)
+                          Sort Key: ((c.checked_at)::date) DESC
+                          Sort Method: quicksort  Memory: 32kB
+                          Buffers: shared hit=26
+                          ->  Bitmap Heap Scan on check_results c  (cost=11.73..49.13 rows=336 width=5) (actual time=0.017..0.059 rows=336.00 loops=1)
+                                Recheck Cond: ((monitor_id = 1) AND (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '7 days'::interval)))
+                                Heap Blocks: exact=23
+                                Buffers: shared hit=26
+                                ->  Bitmap Index Scan on check_results_monitor_id_checked_at_idx  (cost=0.00..11.65 rows=336 width=0) (actual time=0.013..0.013 rows=336.00 loops=1)
+                                      Index Cond: ((monitor_id = 1) AND (checked_at >= ((now() AT TIME ZONE 'UTC'::text) - '7 days'::interval)))
+                                      Index Searches: 1
+                                      Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=133
+Planning Time: 0.241 ms
+Execution Time: 1.577 ms

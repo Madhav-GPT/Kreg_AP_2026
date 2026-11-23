@@ -1,0 +1,86 @@
+=== R16 run 1 ===
+Limit  (cost=7.14..7.16 rows=6 width=95) (actual time=0.051..0.051 rows=6.00 loops=1)
+  Buffers: shared hit=27
+  ->  Sort  (cost=7.14..7.16 rows=6 width=95) (actual time=0.050..0.051 rows=6.00 loops=1)
+        Sort Key: m.created_at DESC, m.id DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=27
+        ->  Nested Loop Left Join  (cost=0.61..7.06 rows=6 width=95) (actual time=0.023..0.039 rows=6.00 loops=1)
+              Buffers: shared hit=21
+              ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=6 width=69) (actual time=0.004..0.005 rows=6.00 loops=1)
+                    Filter: (user_id = 1)
+                    Rows Removed by Filter: 4
+                    Buffers: shared hit=1
+              ->  Limit  (cost=0.61..0.97 rows=1 width=30) (actual time=0.005..0.005 rows=0.83 loops=6)
+                    Buffers: shared hit=20
+                    ->  Incremental Sort  (cost=0.61..153.95 rows=425 width=30) (actual time=0.005..0.005 rows=0.83 loops=6)
+                          Sort Key: c.checked_at DESC, c.id DESC
+                          Presorted Key: c.checked_at
+                          Full-sort Groups: 6  Sort Method: quicksort  Average Memory: 25kB  Peak Memory: 25kB
+                          Buffers: shared hit=20
+                          ->  Index Scan Backward using check_results_monitor_id_checked_at_idx on check_results c  (cost=0.28..134.93 rows=425 width=30) (actual time=0.003..0.004 rows=1.67 loops=6)
+                                Index Cond: (monitor_id = m.id)
+                                Index Searches: 6
+                                Buffers: shared hit=17
+Planning:
+  Buffers: shared hit=180
+Planning Time: 0.805 ms
+Execution Time: 0.125 ms
+
+=== R16 run 2 ===
+Limit  (cost=7.14..7.16 rows=6 width=95) (actual time=0.101..0.102 rows=6.00 loops=1)
+  Buffers: shared hit=27
+  ->  Sort  (cost=7.14..7.16 rows=6 width=95) (actual time=0.100..0.101 rows=6.00 loops=1)
+        Sort Key: m.created_at DESC, m.id DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=27
+        ->  Nested Loop Left Join  (cost=0.61..7.06 rows=6 width=95) (actual time=0.048..0.078 rows=6.00 loops=1)
+              Buffers: shared hit=21
+              ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=6 width=69) (actual time=0.011..0.012 rows=6.00 loops=1)
+                    Filter: (user_id = 1)
+                    Rows Removed by Filter: 4
+                    Buffers: shared hit=1
+              ->  Limit  (cost=0.61..0.97 rows=1 width=30) (actual time=0.010..0.010 rows=0.83 loops=6)
+                    Buffers: shared hit=20
+                    ->  Incremental Sort  (cost=0.61..153.95 rows=425 width=30) (actual time=0.010..0.010 rows=0.83 loops=6)
+                          Sort Key: c.checked_at DESC, c.id DESC
+                          Presorted Key: c.checked_at
+                          Full-sort Groups: 6  Sort Method: quicksort  Average Memory: 25kB  Peak Memory: 25kB
+                          Buffers: shared hit=20
+                          ->  Index Scan Backward using check_results_monitor_id_checked_at_idx on check_results c  (cost=0.28..134.93 rows=425 width=30) (actual time=0.007..0.007 rows=1.67 loops=6)
+                                Index Cond: (monitor_id = m.id)
+                                Index Searches: 6
+                                Buffers: shared hit=17
+Planning:
+  Buffers: shared hit=180
+Planning Time: 1.127 ms
+Execution Time: 0.160 ms
+
+=== R16 run 3 ===
+Limit  (cost=7.14..7.16 rows=6 width=95) (actual time=0.046..0.047 rows=6.00 loops=1)
+  Buffers: shared hit=27
+  ->  Sort  (cost=7.14..7.16 rows=6 width=95) (actual time=0.046..0.046 rows=6.00 loops=1)
+        Sort Key: m.created_at DESC, m.id DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=27
+        ->  Nested Loop Left Join  (cost=0.61..7.06 rows=6 width=95) (actual time=0.021..0.037 rows=6.00 loops=1)
+              Buffers: shared hit=21
+              ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=6 width=69) (actual time=0.003..0.004 rows=6.00 loops=1)
+                    Filter: (user_id = 1)
+                    Rows Removed by Filter: 4
+                    Buffers: shared hit=1
+              ->  Limit  (cost=0.61..0.97 rows=1 width=30) (actual time=0.005..0.005 rows=0.83 loops=6)
+                    Buffers: shared hit=20
+                    ->  Incremental Sort  (cost=0.61..153.95 rows=425 width=30) (actual time=0.005..0.005 rows=0.83 loops=6)
+                          Sort Key: c.checked_at DESC, c.id DESC
+                          Presorted Key: c.checked_at
+                          Full-sort Groups: 6  Sort Method: quicksort  Average Memory: 25kB  Peak Memory: 25kB
+                          Buffers: shared hit=20
+                          ->  Index Scan Backward using check_results_monitor_id_checked_at_idx on check_results c  (cost=0.28..134.93 rows=425 width=30) (actual time=0.003..0.003 rows=1.67 loops=6)
+                                Index Cond: (monitor_id = m.id)
+                                Index Searches: 6
+                                Buffers: shared hit=17
+Planning:
+  Buffers: shared hit=180
+Planning Time: 0.326 ms
+Execution Time: 0.072 ms

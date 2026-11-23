@@ -1,0 +1,35 @@
+=== W6 run 1 ===
+Update on monitors m  (cost=0.00..1.13 rows=1 width=22) (actual time=0.048..0.049 rows=1.00 loops=1)
+  Buffers: shared hit=11
+  ->  Seq Scan on monitors m  (cost=0.00..1.13 rows=1 width=22) (actual time=0.008..0.008 rows=1.00 loops=1)
+        Filter: (id = 2)
+        Rows Removed by Filter: 9
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=80
+Planning Time: 0.254 ms
+Execution Time: 0.101 ms
+
+=== W6 run 2 ===
+Update on monitors m  (cost=0.00..1.13 rows=1 width=22) (actual time=0.061..0.062 rows=1.00 loops=1)
+  Buffers: shared hit=11
+  ->  Seq Scan on monitors m  (cost=0.00..1.13 rows=1 width=22) (actual time=0.013..0.013 rows=1.00 loops=1)
+        Filter: (id = 2)
+        Rows Removed by Filter: 9
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=80
+Planning Time: 0.295 ms
+Execution Time: 0.182 ms
+
+=== W6 run 3 ===
+Update on monitors m  (cost=0.00..1.13 rows=1 width=22) (actual time=0.044..0.045 rows=1.00 loops=1)
+  Buffers: shared hit=11
+  ->  Seq Scan on monitors m  (cost=0.00..1.13 rows=1 width=22) (actual time=0.011..0.011 rows=1.00 loops=1)
+        Filter: (id = 2)
+        Rows Removed by Filter: 9
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=80
+Planning Time: 0.223 ms
+Execution Time: 0.106 ms

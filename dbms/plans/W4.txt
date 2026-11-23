@@ -1,0 +1,41 @@
+=== W4 run 1 ===
+Delete on monitors m  (cost=0.00..1.15 rows=0 width=0) (actual time=0.030..0.030 rows=0.00 loops=1)
+  Buffers: shared hit=8
+  ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=6) (actual time=0.006..0.006 rows=1.00 loops=1)
+        Filter: ((id = 4) AND (user_id = 1))
+        Rows Removed by Filter: 9
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=83
+Planning Time: 0.184 ms
+Trigger for constraint check_results_monitor_id_fkey: time=0.254 calls=1
+Trigger for constraint incidents_monitor_id_fkey: time=0.100 calls=1
+Execution Time: 0.436 ms
+
+=== W4 run 2 ===
+Delete on monitors m  (cost=0.00..1.15 rows=0 width=0) (actual time=0.029..0.029 rows=0.00 loops=1)
+  Buffers: shared hit=8
+  ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=6) (actual time=0.006..0.006 rows=1.00 loops=1)
+        Filter: ((id = 4) AND (user_id = 1))
+        Rows Removed by Filter: 9
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=83
+Planning Time: 0.182 ms
+Trigger for constraint check_results_monitor_id_fkey: time=0.272 calls=1
+Trigger for constraint incidents_monitor_id_fkey: time=0.150 calls=1
+Execution Time: 0.501 ms
+
+=== W4 run 3 ===
+Delete on monitors m  (cost=0.00..1.15 rows=0 width=0) (actual time=0.029..0.029 rows=0.00 loops=1)
+  Buffers: shared hit=8
+  ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=6) (actual time=0.006..0.006 rows=1.00 loops=1)
+        Filter: ((id = 4) AND (user_id = 1))
+        Rows Removed by Filter: 9
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=83
+Planning Time: 0.184 ms
+Trigger for constraint check_results_monitor_id_fkey: time=0.262 calls=1
+Trigger for constraint incidents_monitor_id_fkey: time=0.094 calls=1
+Execution Time: 0.436 ms

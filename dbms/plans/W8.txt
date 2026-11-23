@@ -1,0 +1,56 @@
+=== W8 run 1 ===
+Update on incidents i  (cost=0.00..2.20 rows=1 width=20) (actual time=0.038..0.039 rows=1.00 loops=1)
+  Buffers: shared hit=8
+  ->  Nested Loop  (cost=0.00..2.20 rows=1 width=20) (actual time=0.011..0.012 rows=1.00 loops=1)
+        Join Filter: (m.last_checked_at >= i.started_at)
+        Buffers: shared hit=2
+        ->  Seq Scan on incidents i  (cost=0.00..1.04 rows=1 width=18) (actual time=0.006..0.007 rows=1.00 loops=1)
+              Filter: ((resolved_at IS NULL) AND (monitor_id = 3))
+              Rows Removed by Filter: 2
+              Buffers: shared hit=1
+        ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=18) (actual time=0.004..0.004 rows=1.00 loops=1)
+              Filter: ((id = 3) AND (status = 'UP'::"MonitorStatus"))
+              Rows Removed by Filter: 2
+              Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=237
+Planning Time: 0.344 ms
+Execution Time: 0.094 ms
+
+=== W8 run 2 ===
+Update on incidents i  (cost=0.00..2.20 rows=1 width=20) (actual time=0.043..0.044 rows=1.00 loops=1)
+  Buffers: shared hit=8
+  ->  Nested Loop  (cost=0.00..2.20 rows=1 width=20) (actual time=0.012..0.013 rows=1.00 loops=1)
+        Join Filter: (m.last_checked_at >= i.started_at)
+        Buffers: shared hit=2
+        ->  Seq Scan on incidents i  (cost=0.00..1.04 rows=1 width=18) (actual time=0.007..0.008 rows=1.00 loops=1)
+              Filter: ((resolved_at IS NULL) AND (monitor_id = 3))
+              Rows Removed by Filter: 2
+              Buffers: shared hit=1
+        ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=18) (actual time=0.004..0.004 rows=1.00 loops=1)
+              Filter: ((id = 3) AND (status = 'UP'::"MonitorStatus"))
+              Rows Removed by Filter: 2
+              Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=237
+Planning Time: 0.375 ms
+Execution Time: 0.103 ms
+
+=== W8 run 3 ===
+Update on incidents i  (cost=0.00..2.20 rows=1 width=20) (actual time=0.036..0.036 rows=1.00 loops=1)
+  Buffers: shared hit=8
+  ->  Nested Loop  (cost=0.00..2.20 rows=1 width=20) (actual time=0.010..0.011 rows=1.00 loops=1)
+        Join Filter: (m.last_checked_at >= i.started_at)
+        Buffers: shared hit=2
+        ->  Seq Scan on incidents i  (cost=0.00..1.04 rows=1 width=18) (actual time=0.006..0.007 rows=1.00 loops=1)
+              Filter: ((resolved_at IS NULL) AND (monitor_id = 3))
+              Rows Removed by Filter: 2
+              Buffers: shared hit=1
+        ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=18) (actual time=0.004..0.004 rows=1.00 loops=1)
+              Filter: ((id = 3) AND (status = 'UP'::"MonitorStatus"))
+              Rows Removed by Filter: 2
+              Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=237
+Planning Time: 0.337 ms
+Execution Time: 0.092 ms

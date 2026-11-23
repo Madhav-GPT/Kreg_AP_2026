@@ -1,0 +1,29 @@
+=== R10 run 1 ===
+Seq Scan on monitors m  (cost=0.00..1.27 rows=4 width=69) (actual time=0.007..0.009 rows=6.00 loops=1)
+  Filter: (is_active AND ((last_checked_at IS NULL) OR (last_checked_at <= ((now() AT TIME ZONE 'UTC'::text) - (((interval_sec - 1))::double precision * '00:00:01'::interval)))))
+  Rows Removed by Filter: 4
+  Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=97
+Planning Time: 0.150 ms
+Execution Time: 0.028 ms
+
+=== R10 run 2 ===
+Seq Scan on monitors m  (cost=0.00..1.27 rows=4 width=69) (actual time=0.008..0.009 rows=6.00 loops=1)
+  Filter: (is_active AND ((last_checked_at IS NULL) OR (last_checked_at <= ((now() AT TIME ZONE 'UTC'::text) - (((interval_sec - 1))::double precision * '00:00:01'::interval)))))
+  Rows Removed by Filter: 4
+  Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=97
+Planning Time: 0.154 ms
+Execution Time: 0.029 ms
+
+=== R10 run 3 ===
+Seq Scan on monitors m  (cost=0.00..1.27 rows=4 width=69) (actual time=0.007..0.008 rows=6.00 loops=1)
+  Filter: (is_active AND ((last_checked_at IS NULL) OR (last_checked_at <= ((now() AT TIME ZONE 'UTC'::text) - (((interval_sec - 1))::double precision * '00:00:01'::interval)))))
+  Rows Removed by Filter: 4
+  Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=97
+Planning Time: 0.148 ms
+Execution Time: 0.026 ms

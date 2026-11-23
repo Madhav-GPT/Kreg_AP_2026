@@ -1,0 +1,35 @@
+=== R5 run 1 ===
+Aggregate  (cost=1.14..1.15 rows=1 width=8) (actual time=0.009..0.009 rows=1.00 loops=1)
+  Buffers: shared hit=1
+  ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=6 width=0) (actual time=0.005..0.005 rows=6.00 loops=1)
+        Filter: (user_id = 1)
+        Rows Removed by Filter: 4
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=80
+Planning Time: 0.205 ms
+Execution Time: 0.034 ms
+
+=== R5 run 2 ===
+Aggregate  (cost=1.14..1.15 rows=1 width=8) (actual time=0.010..0.010 rows=1.00 loops=1)
+  Buffers: shared hit=1
+  ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=6 width=0) (actual time=0.005..0.005 rows=6.00 loops=1)
+        Filter: (user_id = 1)
+        Rows Removed by Filter: 4
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=80
+Planning Time: 0.181 ms
+Execution Time: 0.035 ms
+
+=== R5 run 3 ===
+Aggregate  (cost=1.14..1.15 rows=1 width=8) (actual time=0.008..0.009 rows=1.00 loops=1)
+  Buffers: shared hit=1
+  ->  Seq Scan on monitors m  (cost=0.00..1.12 rows=6 width=0) (actual time=0.004..0.005 rows=6.00 loops=1)
+        Filter: (user_id = 1)
+        Rows Removed by Filter: 4
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=80
+Planning Time: 0.175 ms
+Execution Time: 0.031 ms

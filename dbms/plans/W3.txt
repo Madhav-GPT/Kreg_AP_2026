@@ -1,0 +1,35 @@
+=== W3 run 1 ===
+Update on monitors m  (cost=0.00..1.15 rows=1 width=75) (actual time=0.040..0.041 rows=1.00 loops=1)
+  Buffers: shared hit=11
+  ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=75) (actual time=0.007..0.008 rows=1.00 loops=1)
+        Filter: ((id = 1) AND (user_id = 1))
+        Rows Removed by Filter: 9
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=89
+Planning Time: 0.226 ms
+Execution Time: 0.116 ms
+
+=== W3 run 2 ===
+Update on monitors m  (cost=0.00..1.15 rows=1 width=75) (actual time=0.036..0.037 rows=1.00 loops=1)
+  Buffers: shared hit=11
+  ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=75) (actual time=0.006..0.007 rows=1.00 loops=1)
+        Filter: ((id = 1) AND (user_id = 1))
+        Rows Removed by Filter: 9
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=89
+Planning Time: 0.186 ms
+Execution Time: 0.089 ms
+
+=== W3 run 3 ===
+Update on monitors m  (cost=0.00..1.15 rows=1 width=75) (actual time=0.038..0.039 rows=1.00 loops=1)
+  Buffers: shared hit=11
+  ->  Seq Scan on monitors m  (cost=0.00..1.15 rows=1 width=75) (actual time=0.006..0.007 rows=1.00 loops=1)
+        Filter: ((id = 1) AND (user_id = 1))
+        Rows Removed by Filter: 9
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=89
+Planning Time: 0.193 ms
+Execution Time: 0.101 ms
